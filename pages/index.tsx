@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { Container, PokeList, PokeBox } from './styles';
 
 import Layout from '../components/Layout';
-import Header from '../components/Header';
 
 import api from '../services/api';
 
@@ -23,7 +22,7 @@ interface Pokemon {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await api.get('/');
+  const response = await api.get('/pokedex/2');
 
   const pokemons = response.data.pokemon_entries;
 
@@ -38,22 +37,25 @@ const Home: React.FC<Props> = ({ pokemons }) => {
   return (
     <Layout>
       <Container>
-        <Header />
-
         <PokeList>
           <ul>
             {pokemons.map(pokemon => (
-              <li key={pokemon.entry_number}>
-                <Link href="/">
-                  <PokeBox>
-                    <h1>{pokemon.pokemon_species.name}</h1>
-                    <img
-                      src={`/sprites/${pokemon.entry_number}.png`}
-                      alt={pokemon.pokemon_species.name}
-                    />
-                  </PokeBox>
-                </Link>
-              </li>
+              <Link
+                key={pokemon.entry_number}
+                href={`/pokemon/${pokemon.entry_number}`}
+              >
+                <a>
+                  <li>
+                    <PokeBox>
+                      <h1>{pokemon.pokemon_species.name}</h1>
+                      <img
+                        src={`/sprites/${pokemon.entry_number}.png`}
+                        alt={pokemon.pokemon_species.name}
+                      />
+                    </PokeBox>
+                  </li>
+                </a>
+              </Link>
             ))}
           </ul>
         </PokeList>

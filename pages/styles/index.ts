@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Link from 'next/link';
 
 export const Container = styled.div`
   max-width: 1200px;
@@ -21,21 +20,26 @@ export const PokeList = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     grid-gap: 24px 24px;
 
-    li {
-      display: flex;
-      flex: 1;
-      justify-content: center;
+    a {
+      text-decoration: none;
+      color: #2a2a2a;
 
-      background: #fff;
-      height: 320px;
-      border-radius: 4px;
-      padding: 24px 32px;
-      box-shadow: 3px 3px 6px #aaaaaa;
-      cursor: pointer;
-      transition: box-shadow 0.3s;
+      li {
+        display: flex;
+        flex: 1;
+        justify-content: center;
 
-      &:hover {
-        box-shadow: 5px 5px 10px #aaaaaa;
+        background: #fff;
+        height: 320px;
+        border-radius: 4px;
+        padding: 24px 32px;
+        box-shadow: 3px 3px 6px #aaaaaa;
+        cursor: pointer;
+        transition: box-shadow 0.3s;
+
+        &:hover {
+          box-shadow: 5px 5px 10px #aaaaaa;
+        }
       }
     }
   }
@@ -45,6 +49,7 @@ export const PokeBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  height: 100%;
 
   h1 {
     font-weight: bold;
