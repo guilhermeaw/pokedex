@@ -1,11 +1,12 @@
 import React from 'react';
-import { GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import { Container, PokeList, PokeBox } from './styles';
 
 import Layout from '../components/Layout';
 
 import api from '../services/api';
+import Header from '../components/Header';
 
 interface Props {
   pokemons: Pokemon[];
@@ -33,10 +34,12 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Home: React.FC<Props> = ({ pokemons }) => {
+const Home: NextPage<Props> = ({ pokemons }) => {
   return (
     <Layout>
       <Container>
+        <Header />
+
         <PokeList>
           <ul>
             {pokemons.map(pokemon => (

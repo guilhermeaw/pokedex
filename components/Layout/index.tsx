@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
+import { NextPage } from 'next';
 import GlobalStyle from '../../styles/global';
-import Header from '../Header';
 
-const Layout: React.FC = ({ children }) => (
-  <div>
-    <Header />
-    {children}
+interface Props {
+  children?: ReactNode;
+}
+
+const Layout: NextPage = ({ children }: Props) => (
+  <>
     <GlobalStyle />
-  </div>
+    {children}
+  </>
 );
 
 export default Layout;

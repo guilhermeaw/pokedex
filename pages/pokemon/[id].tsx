@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Link from 'next/link';
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { Container } from '../styles/pokemon';
-import Header from '../../components/Header';
 import api from '../../services/api';
+import Header from '../../components/Header';
 
 interface Props {
   pokemon: Pokemon;
@@ -46,11 +46,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const Pokemon: React.FC<Props> = ({ pokemon }) => {
+const Pokemon: NextPage<Props> = ({ pokemon }) => {
   return (
     <Container>
       <Header />
-
       <div>
         <h1>{pokemon.name}</h1>
         <img src={pokemon.sprites.front_default} alt="pokemon-front" />
